@@ -416,18 +416,22 @@ const Curriculum = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#1A1F2C] text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-900 to-slate-800 text-white">
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-3xl font-bold mb-2">{curriculumData.title}</h1>
-            <div className="flex items-center text-gray-400">
-              <Calendar className="h-4 w-4 mr-1" />
-              <span className="mr-4">Duration: {curriculumData.duration}</span>
-              <BookOpen className="h-4 w-4 mr-1" />
-              <span>Total Credits: {curriculumData.totalCredits}</span>
+            <h1 className="text-3xl font-bold mb-2 text-white">{curriculumData.title}</h1>
+            <div className="flex flex-wrap items-center text-slate-300 gap-4">
+              <div className="flex items-center">
+                <Calendar className="h-4 w-4 mr-1 text-indigo-400" />
+                <span>Duration: {curriculumData.duration}</span>
+              </div>
+              <div className="flex items-center">
+                <BookOpen className="h-4 w-4 mr-1 text-indigo-400" />
+                <span>Total Credits: {curriculumData.totalCredits}</span>
+              </div>
             </div>
           </div>
           
@@ -435,28 +439,28 @@ const Curriculum = () => {
           {canEditCurriculum && (
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="bg-purple-600 hover:bg-purple-700">
+                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white shadow-md transition-all duration-200">
                   <Plus className="mr-2 h-4 w-4" />
                   Add Document
                 </Button>
               </DialogTrigger>
-              <DialogContent className="bg-[#2A2A2A] text-white border-[#444444]">
+              <DialogContent className="bg-slate-800 text-white border-slate-700 shadow-xl">
                 <DialogHeader>
-                  <DialogTitle>{editMode ? 'Edit Curriculum Document' : 'Add New Curriculum Document'}</DialogTitle>
+                  <DialogTitle className="text-xl font-semibold text-white">{editMode ? 'Edit Curriculum Document' : 'Add New Curriculum Document'}</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 py-4">
                   <div className="space-y-2">
-                    <Label htmlFor="title">Title*</Label>
+                    <Label htmlFor="title" className="text-slate-200">Title*</Label>
                     <Input 
                       id="title" 
                       placeholder="Document Title" 
                       value={newCurriculumItem.title}
                       onChange={(e) => setNewCurriculumItem({...newCurriculumItem, title: e.target.value})}
-                      className="bg-[#333333] border-[#444444]"
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 focus:ring-indigo-500"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="semester">Semester*</Label>
+                    <Label htmlFor="semester" className="text-slate-200">Semester*</Label>
                     <Input 
                       id="semester" 
                       type="number" 
@@ -465,47 +469,47 @@ const Curriculum = () => {
                       placeholder="Semester Number" 
                       value={newCurriculumItem.semester.toString()}
                       onChange={(e) => setNewCurriculumItem({...newCurriculumItem, semester: parseInt(e.target.value) || 1})}
-                      className="bg-[#333333] border-[#444444]"
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 focus:ring-indigo-500"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="description">Description*</Label>
+                    <Label htmlFor="description" className="text-slate-200">Description*</Label>
                     <Textarea 
                       id="description" 
                       placeholder="Document Description" 
                       value={newCurriculumItem.description}
                       onChange={(e) => setNewCurriculumItem({...newCurriculumItem, description: e.target.value})}
-                      className="bg-[#333333] border-[#444444] min-h-[100px]"
+                      className="bg-slate-700 border-slate-600 text-white placeholder:text-slate-400 focus:border-indigo-500 focus:ring-indigo-500 min-h-[100px]"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="file">{editMode ? 'Replace File (optional)' : 'Upload File*'}</Label>
+                    <Label htmlFor="file" className="text-slate-200">{editMode ? 'Replace File (optional)' : 'Upload File*'}</Label>
                     <Input 
                       id="file" 
                       type="file" 
                       onChange={handleFileChange}
-                      className="bg-[#333333] border-[#444444]"
+                      className="bg-slate-700 border-slate-600 text-white file:bg-indigo-600 file:text-white file:border-0 file:rounded-md file:px-4 file:py-2 file:mr-4 file:hover:bg-indigo-700 file:transition-colors"
                     />
                     {selectedFile && (
-                      <p className="text-sm text-green-400">
+                      <p className="text-sm text-emerald-400">
                         File selected: {selectedFile.name}
                       </p>
                     )}
                     {editMode && !selectedFile && (
-                      <p className="text-sm text-yellow-400">
+                      <p className="text-sm text-amber-400">
                         No new file selected. The existing file will be kept.
                       </p>
                     )}
                   </div>
                   {error && (
-                    <p className="text-red-500 text-sm">{error}</p>
+                    <p className="text-red-400 text-sm bg-red-900/30 p-2 rounded-md">{error}</p>
                   )}
                 </div>
                 <DialogFooter>
                   <Button 
                     onClick={handleSubmit}
                     disabled={loading}
-                    className="bg-purple-600 hover:bg-purple-700"
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white shadow-md transition-all duration-200"
                   >
                     {loading ? 'Saving...' : editMode ? 'Update Document' : 'Upload Document'}
                   </Button>
@@ -517,21 +521,21 @@ const Curriculum = () => {
         
         {/* Curriculum overview section */}
         <div className="mb-8">
-          <Card className="bg-gradient-to-br from-[#2A2A2A] to-[#232323] border-[#444444] shadow-md">
-            <CardHeader className="border-b border-[#444444] bg-[#333333]">
-              <CardTitle className="flex items-center">
-                <GraduationCap className="h-5 w-5 mr-2 text-purple-400" />
+          <Card className="bg-gradient-to-br from-slate-800 to-slate-700 border-slate-600 shadow-lg">
+            <CardHeader className="border-b border-slate-600 bg-slate-800/50">
+              <CardTitle className="flex items-center text-white">
+                <GraduationCap className="h-5 w-5 mr-2 text-indigo-400" />
                 Curriculum Overview
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-4">
-              <p className="text-gray-300 mb-4">
+              <p className="text-slate-200 mb-4">
                 This curriculum provides a comprehensive education in Computer Science, covering 
                 programming, algorithms, data structures, software engineering, artificial intelligence, 
                 and more across {curriculumData.semesters.length} semesters.
               </p>
               {error && (
-                <p className="text-red-500 text-sm mt-2">{error}</p>
+                <p className="text-red-400 text-sm bg-red-900/30 p-2 rounded-md mt-2">{error}</p>
               )}
             </CardContent>
           </Card>
@@ -539,9 +543,9 @@ const Curriculum = () => {
         
         {/* Access denied message for users without view permission */}
         {!canViewCurriculum && (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-red-500 mb-4">Access Denied</h2>
-            <p className="text-gray-400">You don't have permission to view the curriculum.</p>
+          <div className="text-center py-12 bg-slate-800/50 rounded-lg border border-slate-700 shadow-md">
+            <h2 className="text-2xl font-bold text-red-400 mb-4">Access Denied</h2>
+            <p className="text-slate-300">You don't have permission to view the curriculum.</p>
           </div>
         )}
         
@@ -549,8 +553,8 @@ const Curriculum = () => {
         {canViewCurriculum && (
           loading ? (
             <div className="text-center py-8 flex justify-center items-center">
-              <Clock className="h-6 w-6 animate-spin mr-2 text-purple-500" />
-              <p>Loading curriculum data...</p>
+              <Clock className="h-6 w-6 animate-spin mr-2 text-indigo-500" />
+              <p className="text-slate-200">Loading curriculum data...</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-4">
@@ -561,23 +565,23 @@ const Curriculum = () => {
                   <div key={semesterData.semester} className="mb-4">
                     <button 
                       onClick={() => toggleSemesterExpansion(semesterData.semester)}
-                      className="w-full bg-gradient-to-r from-[#333333] to-[#2A2A2A] hover:from-[#3A3A3A] hover:to-[#303030] p-4 rounded-lg shadow-md border border-[#444444] flex items-center justify-between transition-all duration-200"
+                      className="w-full bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 p-4 rounded-lg shadow-md border border-slate-600 flex items-center justify-between transition-all duration-200"
                     >
                       <div className="flex items-center">
                         {isExpanded ? (
-                          <FolderOpen className="h-6 w-6 text-purple-400 mr-3" />
+                          <FolderOpen className="h-6 w-6 text-indigo-400 mr-3" />
                         ) : (
-                          <Folder className="h-6 w-6 text-purple-400 mr-3" />
+                          <Folder className="h-6 w-6 text-indigo-400 mr-3" />
                         )}
                         <div className="text-left">
                           <h2 className="text-xl font-bold text-white">Semester {semesterData.semester}</h2>
-                          <p className="text-gray-400 text-sm">{semesterData.items.length} document{semesterData.items.length !== 1 ? 's' : ''}</p>
+                          <p className="text-slate-300 text-sm">{semesterData.items.length} document{semesterData.items.length !== 1 ? 's' : ''}</p>
                         </div>
                       </div>
                       {isExpanded ? (
-                        <ChevronDown className="h-5 w-5 text-purple-400" />
+                        <ChevronDown className="h-5 w-5 text-indigo-400" />
                       ) : (
-                        <ChevronRight className="h-5 w-5 text-purple-400" />
+                        <ChevronRight className="h-5 w-5 text-indigo-400" />
                       )}
                     </button>
                     
@@ -594,16 +598,16 @@ const Curriculum = () => {
                           {semesterData.items.length > 0 ? (
                             // Show documents if semester has items
                             semesterData.items.map((item) => (
-                              <Card key={item._id} className="bg-gradient-to-br from-[#2A2A2A] to-[#232323] border-[#444444] hover:shadow-lg transition-shadow duration-300">
-                                <CardHeader className="pb-2 border-b border-[#444444] bg-[#333333] flex flex-row justify-between items-start">
-                                  <CardTitle className="text-lg text-purple-200">{item.title}</CardTitle>
+                              <Card key={item._id} className="bg-gradient-to-br from-slate-800 to-slate-700 border-slate-600 hover:shadow-lg transition-shadow duration-300">
+                                <CardHeader className="pb-2 border-b border-slate-600 bg-slate-800/50 flex flex-row justify-between items-start">
+                                  <CardTitle className="text-lg text-indigo-200">{item.title}</CardTitle>
                                   {canEditCurriculum && (
                                     <div className="flex space-x-1">
                                       <Button 
                                         variant="ghost" 
                                         size="icon" 
                                         onClick={(e) => handleEditItem(item, e)}
-                                        className="h-8 w-8 text-gray-400 hover:text-white hover:bg-[#444444]"
+                                        className="h-8 w-8 text-slate-300 hover:text-white hover:bg-slate-700"
                                       >
                                         <Pencil className="h-4 w-4" />
                                       </Button>
@@ -611,7 +615,7 @@ const Curriculum = () => {
                                         variant="ghost" 
                                         size="icon"
                                         onClick={(e) => handleDeleteConfirmation(item._id, e)}
-                                        className="h-8 w-8 text-gray-400 hover:text-red-500 hover:bg-[#444444]"
+                                        className="h-8 w-8 text-slate-300 hover:text-red-400 hover:bg-slate-700"
                                       >
                                         <Trash2 className="h-4 w-4" />
                                       </Button>
@@ -619,18 +623,18 @@ const Curriculum = () => {
                                   )}
                                 </CardHeader>
                                 <CardContent className="pt-4">
-                                  <p className="text-gray-300 mb-4">{item.description}</p>
+                                  <p className="text-slate-200 mb-4">{item.description}</p>
                                   {item.fileLink && (
                                     <div className="flex flex-col sm:flex-row gap-2">
                                       <Button 
-                                        className="flex-grow bg-purple-600 hover:bg-purple-700"
+                                        className="flex-grow bg-indigo-600 hover:bg-indigo-700 text-white shadow-md transition-all duration-200"
                                         onClick={() => handleDownload(item.fileLink)}
                                       >
                                         <BookOpen className="mr-2 h-4 w-4" />
                                         View Document
                                       </Button>
                                       <Button 
-                                        className="flex-grow bg-blue-600 hover:bg-blue-700"
+                                        className="flex-grow bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-all duration-200"
                                         onClick={() => {
                                           // Extract filename from URL
                                           try {
@@ -673,9 +677,9 @@ const Curriculum = () => {
                             ))
                           ) : (
                             // Show empty state if semester has no items
-                            <div className="col-span-2 text-center py-8 bg-[#2A2A2A] rounded-lg border border-[#444444] p-4">
-                              <BookOpen className="h-8 w-8 text-gray-500 mx-auto mb-2" />
-                              <p className="text-gray-400">No documents in Semester {semesterData.semester} yet</p>
+                            <div className="col-span-2 text-center py-8 bg-slate-800/50 rounded-lg border border-slate-600 p-4">
+                              <BookOpen className="h-8 w-8 text-slate-400 mx-auto mb-2" />
+                              <p className="text-slate-300">No documents in Semester {semesterData.semester} yet</p>
                             </div>
                           )}
                           
@@ -693,11 +697,11 @@ const Curriculum = () => {
                                 }));
                                 setDialogOpen(true);
                               }}
-                              className="flex flex-col items-center justify-center bg-[#2A2A2A] border border-dashed border-[#444444] rounded-lg p-6 cursor-pointer hover:bg-[#333333] transition-colors duration-200 h-full min-h-[200px]"
+                              className="flex flex-col items-center justify-center bg-slate-800/50 border border-dashed border-slate-600 rounded-lg p-6 cursor-pointer hover:bg-slate-700/50 transition-colors duration-200 h-full min-h-[200px]"
                             >
-                              <Plus className="h-12 w-12 text-purple-400 mb-3" />
-                              <p className="text-gray-300 font-medium">Add Document</p>
-                              <p className="text-gray-500 text-sm text-center mt-2">
+                              <Plus className="h-12 w-12 text-indigo-400 mb-3" />
+                              <p className="text-slate-200 font-medium">Add Document</p>
+                              <p className="text-slate-400 text-sm text-center mt-2">
                                 Add a new document to Semester {semesterData.semester}
                               </p>
                             </div>
@@ -716,24 +720,24 @@ const Curriculum = () => {
       {/* Delete confirmation dialog */}
       {deleteConfirmation && (
         <Dialog open={!!deleteConfirmation} onOpenChange={(open) => !open && setDeleteConfirmation(null)}>
-          <DialogContent className="bg-[#2A2A2A] text-white border-[#444444]">
+          <DialogContent className="bg-slate-800 text-white border-slate-700 shadow-xl">
             <DialogHeader>
-              <DialogTitle>Confirm Deletion</DialogTitle>
+              <DialogTitle className="text-xl font-semibold text-white">Confirm Deletion</DialogTitle>
             </DialogHeader>
             <div className="py-4">
-              <p className="text-gray-300 mb-4">Are you sure you want to delete this curriculum document? This action cannot be undone.</p>
+              <p className="text-slate-200 mb-4">Are you sure you want to delete this curriculum document? This action cannot be undone.</p>
               <div className="flex justify-end space-x-2">
                 <Button 
                   variant="outline" 
                   onClick={() => setDeleteConfirmation(null)}
-                  className="bg-transparent border-gray-600 text-gray-300 hover:bg-gray-700"
+                  className="bg-transparent border-slate-600 text-slate-300 hover:bg-slate-700"
                 >
                   Cancel
                 </Button>
                 <Button 
                   onClick={handleDeleteItem}
                   disabled={loading}
-                  className="bg-red-600 hover:bg-red-700"
+                  className="bg-red-600 hover:bg-red-700 text-white shadow-md transition-all duration-200"
                 >
                   {loading ? 'Deleting...' : 'Delete'}
                 </Button>

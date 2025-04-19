@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -11,9 +12,15 @@ const features = [
 ];
 
 const Index = () => {
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  const handleGetStarted = () => {
+    setShowNavbar(true);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#1A1F2C] text-white">
-      <Navbar />
+      <Navbar showNavbar={showNavbar} />
       
       <main className="flex-grow">
         {/* Hero Section */}
@@ -33,11 +40,12 @@ const Index = () => {
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <Link
                   to="/signup"
+                  onClick={handleGetStarted}
                   className="rounded-md bg-purple-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
                 >
                   Get started
                 </Link>
-                <Link to="/login" className="text-sm font-semibold leading-6 text-white flex items-center gap-1">
+                <Link to="/learn-more" className="text-sm font-semibold leading-6 text-white flex items-center gap-1">
                   Learn more <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

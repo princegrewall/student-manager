@@ -29,7 +29,6 @@ const Login = () => {
     clearError();
   }, [clearError]);
 
-  // Watch for auth errors from the context
   useEffect(() => {
     if (authError && authError.includes('registered as a')) {
       // Format role mismatch error

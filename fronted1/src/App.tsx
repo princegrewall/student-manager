@@ -17,6 +17,7 @@ import Attendance from "./pages/attendence";
 import Library from "./pages/library";
 import Curriculum from "./pages/curriculum";
 import SemestersPage from "./pages/semesters";
+import LearnMore from "./pages/LearnMore";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/learn-more" element={<LearnMore />} />
             <Route path="/register" element={<Navigate to="/signup" />} />
             
             {/* Protected routes */}
