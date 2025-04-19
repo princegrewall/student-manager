@@ -9,7 +9,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog"
 import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
 import { Trophy, Code, Music, Users, Calendar, MapPin, Layers, Trash2, UserMinus, User } from "lucide-react"
 import { clubsAPI, eventsAPI, adminAPI } from "@/lib/api"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -906,13 +905,13 @@ const ClubDetails = () => {
           <TabsList className="mb-6 bg-gray-800 border-gray-700">
             <TabsTrigger
               value="subclubs"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-700"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-white"
             >
               Subclubs
             </TabsTrigger>
             <TabsTrigger
               value="events"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-indigo-700"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-white"
             >
               Events
             </TabsTrigger>
@@ -1064,19 +1063,19 @@ const ClubDetails = () => {
                 {events.map((event) => (
                   <Card
                     key={event._id}
-                    className="bg-gradient-to-r from-gray-800 to-gray-900 border-none shadow-md hover:shadow-lg transition-all duration-300"
+                    className="bg-gradient-to-r from-gray-500 to-gray-600 border-none shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     <CardContent className="pt-4">
                       <div className="flex justify-between items-start">
                         <div>
                           <h3 className="text-lg font-bold">{event.title}</h3>
-                          <p className="text-gray-300 text-sm mt-1 mb-2">{event.description}</p>
-                          <div className="flex items-center text-sm text-gray-300 mt-3">
-                            <Calendar className="h-4 w-4 mr-1 text-purple-400" />
+                          <p className="text-gray-100 text-sm mt-1 mb-2">{event.description}</p>
+                          <div className="flex items-center text-sm text-gray-100 mt-3">
+                            <Calendar className="h-4 w-4 mr-1 text-purple-600" />
                             <span className="mr-4">{formatDate(event.date)}</span>
                             {event.location && (
                               <>
-                                <MapPin className="h-4 w-4 mr-1 ml-2 text-purple-400" />
+                                <MapPin className="h-4 w-4 mr-1 ml-2 text-purple-600" />
                                 <span>{event.location}</span>
                               </>
                             )}
@@ -1091,7 +1090,7 @@ const ClubDetails = () => {
                               e.stopPropagation()
                               setEventToDelete(event._id)
                             }}
-                            className="text-red-500 hover:bg-red-500/10"
+                            className="text-red-600 hover:bg-red-800"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
@@ -1102,7 +1101,7 @@ const ClubDetails = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-400">No upcoming events.</p>
+              <p className="text-gray-200">No upcoming events.</p>
             )}
           </TabsContent>
         </Tabs>
@@ -1209,7 +1208,7 @@ const ClubDetails = () => {
         </Dialog>
       )}
 
-      <Footer />
+
     </div>
   )
 }

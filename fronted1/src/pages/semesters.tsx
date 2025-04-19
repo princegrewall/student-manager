@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import SemesterFlashcards from '@/components/SemesterFlashcards';
 import { Button } from "@/components/ui/button";
 import { useAuth } from '@/lib/auth-context';
@@ -44,7 +43,6 @@ const SemestersPage = () => {
             </Button>
           </div>
         </main>
-        <Footer />
       </div>
     );
   }
@@ -79,8 +77,7 @@ const SemestersPage = () => {
         {/* Render the semester flashcards component */}
         <SemesterFlashcards key={refreshKey} />
       </main>
-      
-      <Footer />
+    
     </div>
   );
 };

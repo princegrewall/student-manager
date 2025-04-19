@@ -3,7 +3,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useNavigate } from "react-router-dom"
 import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
 import { Book, Calendar, GraduationCap, Users } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
 
@@ -91,7 +90,13 @@ const Dashboard = () => {
           <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
         </div>
 
-        <div className="flex-grow grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4 pb-8">
+        <div className="flex-grow grid gap-4 p-8" style={{
+          gridTemplateColumns: isCoordinator 
+            ? '1fr' 
+            : isTeacher 
+              ? 'repeat(2, 1fr)' 
+              : 'repeat(4, 1fr)'
+        }}>
           {cards.map((card) => (
             <Card
               key={card.title}
@@ -113,7 +118,7 @@ const Dashboard = () => {
         </div>
       </main>
 
-      <Footer />
+
     </div>
   )
 }

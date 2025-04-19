@@ -28,57 +28,59 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-        <Routes>
-            {/* Public routes */}
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/learn-more" element={<LearnMore />} />
-            <Route path="/register" element={<Navigate to="/signup" />} />
-            
-            {/* Protected routes */}
-            <Route path="/dashboard" element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } />
-            <Route path="/clubs" element={
-              <ProtectedRoute requiredPermission="view:members">
-                <Clubs />
-              </ProtectedRoute>
-            } />
-            <Route path="/clubs/:type" element={
-              <ProtectedRoute requiredPermission="view:members">
-                <ClubDetails />
-              </ProtectedRoute>
-            } />
-            <Route path="/attendance" element={
-              <ProtectedRoute requiredPermission="mark:attendance">
-                <Attendance />
-              </ProtectedRoute>
-            } />
-            <Route path="/library" element={
-              <ProtectedRoute requiredPermission="view:library">
-                <Library />
-              </ProtectedRoute>
-            } />
-            <Route path="/curriculum" element={
-              <ProtectedRoute requiredPermission="view:curriculum">
-                <Curriculum />
-              </ProtectedRoute>
-            } />
-            <Route path="/semesters" element={
-              <ProtectedRoute requiredPermission="crud:curriculum">
-                <SemestersPage />
-              </ProtectedRoute>
-            } />
-            
-            {/* 404 route */}
-          <Route path="*" element={<NotFound />} />
-            
-            {/* Unauthorized route */}
-            <Route path="/unauthorized" element={<Unauthorized />} />
-        </Routes>
+         
+            <Routes>
+              {/* Public routes */}
+              <Route path="/" element={<Index />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/learn-more" element={<LearnMore />} />
+              <Route path="/register" element={<Navigate to="/signup" />} />
+              
+              {/* Protected routes */}
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/clubs" element={
+                <ProtectedRoute requiredPermission="view:members">
+                  <Clubs />
+                </ProtectedRoute>
+              } />
+              <Route path="/clubs/:type" element={
+                <ProtectedRoute requiredPermission="view:members">
+                  <ClubDetails />
+                </ProtectedRoute>
+              } />
+              <Route path="/attendance" element={
+                <ProtectedRoute requiredPermission="mark:attendance">
+                  <Attendance />
+                </ProtectedRoute>
+              } />
+              <Route path="/library" element={
+                <ProtectedRoute requiredPermission="view:library">
+                  <Library />
+                </ProtectedRoute>
+              } />
+              <Route path="/curriculum" element={
+                <ProtectedRoute requiredPermission="view:curriculum">
+                  <Curriculum />
+                </ProtectedRoute>
+              } />
+              <Route path="/semesters" element={
+                <ProtectedRoute requiredPermission="crud:curriculum">
+                  <SemestersPage />
+                </ProtectedRoute>
+              } />
+              
+              {/* 404 route */}
+              <Route path="*" element={<NotFound />} />
+              
+              {/* Unauthorized route */}
+              <Route path="/unauthorized" element={<Unauthorized />} />
+            </Routes>
+         
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

@@ -3,7 +3,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useNavigate } from "react-router-dom"
 import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
 import { Code, Music, Trophy } from "lucide-react"
 
 const Clubs = () => {
@@ -40,7 +39,7 @@ const Clubs = () => {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-900 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-teal-950 to-slate-900 text-white">
       <Navbar />
 
       <main className="flex-grow flex flex-col">
@@ -70,7 +69,7 @@ const Clubs = () => {
         </div>
       </main>
 
-      <Footer />
+
     </div>
   )
 }

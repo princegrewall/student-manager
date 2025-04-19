@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -470,13 +469,13 @@ const Attendance = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#0F172A] to-[#1E293B] text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-teal-950 to-slate-900 text-white">
       <Navbar />
 
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-white">Attendance Records</h1>
 
-        <Card className="bg-[#1E293B] border-[#334155] mb-8 shadow-lg">
+        <Card className="bg-slate-800/40 border-slate-700 mb-8 shadow-lg backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-white">Add New Subject</CardTitle>
           </CardHeader>
@@ -486,11 +485,11 @@ const Attendance = () => {
                 placeholder="Enter subject name"
                 value={newSubject}
                 onChange={(e) => setNewSubject(e.target.value)}
-                className="bg-[#0F172A] border-[#334155] text-white placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500"
+                className="bg-slate-800/50 border-slate-700 text-white focus:border-teal-500 focus:ring-1 focus:ring-teal-500"
               />
               <Button
                 onClick={handleAddSubject}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-md transition-all duration-200 hover:shadow-lg"
+                className="bg-teal-600 hover:bg-teal-700 text-white font-medium shadow-md transition-all duration-200 hover:shadow-lg"
               >
                 <Plus className="mr-2 h-4 w-4" />
                 Add Subject
@@ -503,7 +502,7 @@ const Attendance = () => {
 
         {loading ? (
           <div className="text-center py-8">
-            <p className="text-gray-300">Loading attendance data...</p>
+            <p className="text-teal-300">Loading attendance data...</p>
           </div>
         ) : error ? (
           <div className="text-center py-8 text-red-300">
@@ -511,19 +510,19 @@ const Attendance = () => {
             <p>{error}</p>
           </div>
         ) : subjectsWithAttendance.length === 0 ? (
-          <p className="text-gray-300">No attendance records added yet.</p>
+          <p className="text-teal-300">No attendance records added yet.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {subjectsWithAttendance.map((item) => (
               <Card
                 key={item.subject._id}
-                className="bg-[#1E293B] border-[#334155] shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-slate-800/40 border-slate-700 shadow-lg hover:border-teal-600 transition-all duration-300 backdrop-blur-sm"
               >
                 <CardContent className="pt-6">
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-white">{item.subject.name}</h3>
-                      <p className="text-gray-300 mt-1">
+                      <p className="text-teal-300 mt-1">
                         {item.records.length > 0
                           ? `Last updated: ${new Date(item.records[0].date).toLocaleDateString()}`
                           : "No attendance records yet"}
@@ -538,7 +537,7 @@ const Attendance = () => {
                         className={`${
                           item.lastMarked === "Present"
                             ? "bg-green-900/30 text-green-300 border-green-300 font-medium"
-                            : "text-green-800 border-green-500 hover:bg-green-900/30 font-medium"
+                            : "text-green-800 border-green-500 hover:bg-green-500/30 font-medium"
                         }`}
                       >
                         <CheckCircle className="h-4 w-4 mr-1" />
@@ -552,7 +551,7 @@ const Attendance = () => {
                         className={`${
                           item.lastMarked === "Absent"
                             ? "bg-red-900/30 text-red-300 border-red-300 font-medium"
-                            : "text-red-600 border-red-400 hover:bg-red-900/30 font-medium"
+                            : "text-red-600 border-red-400 hover:bg-red-500/30 font-medium"
                         }`}
                       >
                         <XCircle className="h-4 w-4 mr-1" />
@@ -570,14 +569,14 @@ const Attendance = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 mb-4 bg-[#0F172A] p-3 rounded-md shadow-inner">
+                  <div className="grid grid-cols-3 gap-4 mb-4 bg-slate-800/50 p-3 rounded-md shadow-inner">
                     <div className="text-center p-2">
-                      <p className="text-gray-300 text-xs uppercase">Total Classes</p>
+                      <p className="text-teal-300 text-xs uppercase">Total Classes</p>
                       <p className="text-xl font-bold mt-1 text-white">{item.records.length}</p>
-                      <p className="text-xs text-gray-400 mt-1">All time</p>
+                      <p className="text-xs text-teal-500 mt-1">All time</p>
                     </div>
                     <div className="text-center p-2">
-                      <p className="text-gray-300 text-xs uppercase">Present</p>
+                      <p className="text-teal-300 text-xs uppercase">Present</p>
                       <p className="text-xl font-bold mt-1 text-green-400">
                         {item.records.filter((r) => r.status === "Present").length}
                       </p>
@@ -591,7 +590,7 @@ const Attendance = () => {
                       </p>
                     </div>
                     <div className="text-center p-2">
-                      <p className="text-gray-300 text-xs uppercase">Absent</p>
+                      <p className="text-teal-300 text-xs uppercase">Absent</p>
                       <p className="text-xl font-bold mt-1 text-red-400">
                         {item.records.filter((r) => r.status === "Absent").length}
                       </p>
@@ -607,7 +606,7 @@ const Attendance = () => {
                   </div>
 
                   {/* Weekly attendance tracker */}
-                  <div className="bg-[#0F172A] p-3 rounded-md mb-4 shadow-inner">
+                  <div className="bg-slate-800/50 p-3 rounded-md mb-4 shadow-inner">
                     <h4 className="text-sm font-medium mb-2 text-white">This Week's Progress</h4>
                     <div className="flex justify-between">
                       {getCurrentWeekDays().map((day, index) => {
@@ -621,10 +620,10 @@ const Attendance = () => {
 
                         return (
                           <div key={index} className="flex flex-col items-center">
-                            <div className="text-xs text-gray-300 mb-1">{day.label}</div>
+                            <div className="text-xs text-teal-300 mb-1">{day.label}</div>
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium 
-                                                            ${isToday ? "ring-2 ring-blue-400" : ""}
+                                                            ${isToday ? "ring-2 ring-teal-400" : ""}
                                                             ${
                                                               dayRecord?.status === "Present"
                                                                 ? "bg-green-900/50 text-green-300"
@@ -632,12 +631,12 @@ const Attendance = () => {
                                                                   ? "bg-red-900/50 text-red-300"
                                                                   : isPast
                                                                     ? "bg-yellow-900/30 text-yellow-300"
-                                                                    : "bg-[#1E293B] text-gray-400"
+                                                                    : "bg-slate-800 text-teal-300"
                                                             }`}
                             >
                               {day.date.getDate()}
                             </div>
-                            <div className="text-xs mt-1">
+                            <div className="text-xs mt-1 text-white">
                               {dayRecord?.status === "Present"
                                 ? "✓"
                                 : dayRecord?.status === "Absent"
@@ -653,10 +652,10 @@ const Attendance = () => {
                   </div>
 
                   {/* Add attendance streak information */}
-                  <div className="bg-[#0F172A] p-3 rounded-md mb-4 shadow-inner">
+                  <div className="bg-slate-800/50 p-3 rounded-md mb-4 shadow-inner">
                     <div className="flex justify-between items-center">
                       <div>
-                        <p className="text-gray-300 text-xs uppercase">Current Streak</p>
+                        <p className="text-teal-300 text-xs uppercase">Current Streak</p>
                         {item.records.length > 0 ? (
                           <p className="text-lg font-bold mt-1 text-white">
                             {calculateCurrentStreak(item.records)} day
@@ -667,7 +666,7 @@ const Attendance = () => {
                         )}
                       </div>
                       <div>
-                        <p className="text-gray-300 text-xs uppercase">Best Streak</p>
+                        <p className="text-teal-300 text-xs uppercase">Best Streak</p>
                         {item.records.length > 0 ? (
                           <p className="text-lg font-bold mt-1 text-white">
                             {calculateBestStreak(item.records)} day{calculateBestStreak(item.records) !== 1 ? "s" : ""}
@@ -677,7 +676,7 @@ const Attendance = () => {
                         )}
                       </div>
                       <div>
-                        <p className="text-gray-300 text-xs uppercase">This Month</p>
+                        <p className="text-teal-300 text-xs uppercase">This Month</p>
                         <p className="text-lg font-bold mt-1 text-white">
                           {calculateMonthAttendance(item.records).present}/
                           {calculateMonthAttendance(item.records).total} days
@@ -687,11 +686,11 @@ const Attendance = () => {
                   </div>
 
                   {/* Attendance forecast and goals */}
-                  <div className="bg-[#0F172A] p-3 rounded-md mb-4 shadow-inner">
+                  <div className="bg-slate-800/50 p-3 rounded-md mb-4 shadow-inner">
                     <h4 className="text-sm font-medium mb-2 text-white">Forecast & Goals</h4>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-[#1E293B] rounded-md p-3 shadow">
-                        <p className="text-gray-300 text-xs uppercase mb-1">Projected Attendance</p>
+                      <div className="bg-slate-800/70 rounded-md p-3 shadow">
+                        <p className="text-teal-300 text-xs uppercase mb-1">Projected Attendance</p>
                         <div className="flex justify-between items-center">
                           <p className="text-lg font-medium text-white">{calculateProjectedAttendance(item.records)}%</p>
                           <div
@@ -704,21 +703,21 @@ const Attendance = () => {
                             {calculateProjectedAttendance(item.records) >= 75 ? "On Track" : "Needs Improvement"}
                           </div>
                         </div>
-                        <p className="text-xs text-gray-400 mt-2">Based on your current attendance pattern</p>
+                        <p className="text-xs text-teal-500 mt-2">Based on your current attendance pattern</p>
                       </div>
-                      <div className="bg-[#1E293B] rounded-md p-3 shadow">
-                        <p className="text-gray-300 text-xs uppercase mb-1">To Reach 75% Minimum</p>
+                      <div className="bg-slate-800/70 rounded-md p-3 shadow">
+                        <p className="text-teal-300 text-xs uppercase mb-1">To Reach 75% Minimum</p>
                         {calculateAttendanceNeeded(item.records) > 0 ? (
                           <>
                             <p className="text-lg font-medium text-white">
                               Need {calculateAttendanceNeeded(item.records)} more days
                             </p>
-                            <p className="text-xs text-gray-400 mt-2">To achieve minimum required attendance</p>
+                            <p className="text-xs text-teal-500 mt-2">To achieve minimum required attendance</p>
                           </>
                         ) : (
                           <>
                             <p className="text-lg font-medium text-green-300">Goal Achieved!</p>
-                            <p className="text-xs text-gray-400 mt-2">You've met the minimum attendance requirement</p>
+                            <p className="text-xs text-teal-500 mt-2">You've met the minimum attendance requirement</p>
                           </>
                         )}
                       </div>
@@ -732,7 +731,7 @@ const Attendance = () => {
                     </div>
                     <Progress
                       value={item.percentage}
-                      className="h-3 bg-[#334155]"
+                      className="h-3 bg-slate-700"
                       style={{
                         background: "#334155",
                         position: "relative",
@@ -750,7 +749,7 @@ const Attendance = () => {
                       ></div>
                     </Progress>
                     <div className="flex justify-between items-center mt-2">
-                      <p className={`text-sm ${item.percentage >= 75 ? "text-green-300" : "text-red-300"}`}>
+                      <p className={`text-sm ${item.percentage >= 75 ? "text-green-300" : "text-red-500"}`}>
                         {item.percentage >= 75
                           ? "Good Standing"
                           : item.percentage >= 65
@@ -758,14 +757,14 @@ const Attendance = () => {
                             : "Critical - Attendance Below Required Minimum"}
                       </p>
                       {item.percentage < 75 && (
-                        <p className="text-xs text-yellow-300">
+                        <p className="text-xs text-yellow-400">
                           Need{" "}
                           {Math.ceil(
                             (75 * item.records.length -
                               item.records.filter((r) => r.status === "Present").length * 100) /
                               25,
-                          )}
-                          more present days to reach 75%
+                          )}{" "}
+                           more present days to reach 75%
                         </p>
                       )}
                     </div>
@@ -773,8 +772,8 @@ const Attendance = () => {
 
                   {/* Attendance History Collapsible */}
                   {item.records.length > 0 && (
-                    <Collapsible className="mt-4 border-t border-[#334155] pt-4">
-                      <CollapsibleTrigger className="flex w-full items-center justify-between text-sm text-gray-300 hover:text-white">
+                    <Collapsible className="mt-4 border-t border-slate-700 pt-4">
+                      <CollapsibleTrigger className="flex w-full items-center justify-between text-sm text-teal-300 hover:text-white">
                         <div className="flex items-center">
                           <Calendar className="mr-2 h-4 w-4" />
                           Attendance History
@@ -783,7 +782,7 @@ const Attendance = () => {
                       </CollapsibleTrigger>
                       <CollapsibleContent className="mt-2">
                         {/* Calendar visualization */}
-                        <div className="mb-3 p-3 bg-[#0F172A] rounded-md shadow-inner">
+                        <div className="mb-3 p-3 bg-slate-800/50 rounded-md shadow-inner">
                           <h4 className="text-sm font-medium mb-2 text-white">Last 30 Days</h4>
                           <div className="flex flex-wrap gap-1">
                             {generateLast30DaysAttendance(item.records).map((day, index) => (
@@ -794,7 +793,7 @@ const Attendance = () => {
                                     ? "bg-green-900/50 text-green-300"
                                     : day.status === "Absent"
                                       ? "bg-red-900/50 text-red-300"
-                                      : "bg-[#1E293B] text-gray-400"
+                                      : "bg-slate-800 text-teal-300"
                                 }`}
                                 title={
                                   day.date ? `${new Date(day.date).toLocaleDateString()}: ${day.status}` : "No record"
@@ -807,25 +806,25 @@ const Attendance = () => {
                         </div>
 
                         {/* Attendance statistics */}
-                        <div className="mb-3 p-3 bg-[#0F172A] rounded-md shadow-inner">
+                        <div className="mb-3 p-3 bg-slate-800/50 rounded-md shadow-inner">
                           <h4 className="text-sm font-medium mb-2 text-white">Statistics</h4>
                           <div className="grid grid-cols-3 gap-2">
                             <div>
-                              <p className="text-xs text-gray-300">Last Week</p>
+                              <p className="text-xs text-teal-300">Last Week</p>
                               <p className="text-sm font-medium text-white">
                                 {calculatePeriodAttendance(item.records, 7).present}/
                                 {calculatePeriodAttendance(item.records, 7).total} days
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-gray-300">Last 30 Days</p>
+                              <p className="text-xs text-teal-300">Last 30 Days</p>
                               <p className="text-sm font-medium text-white">
                                 {calculatePeriodAttendance(item.records, 30).present}/
                                 {calculatePeriodAttendance(item.records, 30).total} days
                               </p>
                             </div>
                             <div>
-                              <p className="text-xs text-gray-300">Attendance Rate</p>
+                              <p className="text-xs text-teal-300">Attendance Rate</p>
                               <p className="text-sm font-medium text-white">
                                 {item.records.length > 0
                                   ? Math.round(
@@ -851,7 +850,7 @@ const Attendance = () => {
                                 }`}
                               >
                                 <div className="flex items-center">
-                                  <Clock className="h-3 w-3 mr-2 text-gray-300" />
+                                  <Clock className="h-3 w-3 mr-2 text-teal-300" />
                                   <p className="text-sm text-white">{formatDate(record.date)}</p>
                                 </div>
                                 <div
@@ -872,9 +871,9 @@ const Attendance = () => {
                             ))}
                         </div>
                         {item.records.length > 0 && (
-                          <div className="flex items-center mt-2 p-2 bg-blue-900/30 rounded-md shadow">
-                            <Info className="h-4 w-4 text-blue-300 mr-2" />
-                            <p className="text-xs text-blue-300">
+                          <div className="flex items-center mt-2 p-2 bg-teal-900/30 rounded-md shadow">
+                            <Info className="h-4 w-4 text-teal-300 mr-2" />
+                            <p className="text-xs text-teal-300">
                               Records are saved automatically. You can mark attendance once per day.
                             </p>
                           </div>
@@ -889,7 +888,7 @@ const Attendance = () => {
         )}
       </main>
 
-      <Footer />
+
     </div>
   )
 }

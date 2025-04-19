@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { ShieldAlert } from "lucide-react";
 
 const Unauthorized = () => {
@@ -27,7 +26,6 @@ const Unauthorized = () => {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 };

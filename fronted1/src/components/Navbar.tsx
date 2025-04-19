@@ -43,13 +43,15 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
   }
 
   return (
-    <nav className="bg-gradient-to-r from-[#1f1f1f] via-[#222222] to-[#1f1f1f] text-white px-6 py-4 border-b border-[#2e2e2e] shadow-md flex items-center justify-between">
+    <nav className="bg-gradient-to-r from-indigo-900 via-purple-700 to-indigo-500 text-white px-6 py-4 border-b border-purple-700/30 shadow-lg backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold text-white">College Portal</Link>
+        <Link to="/" className="text-2xl font-bold text-white hover:text-purple-300 transition-all duration-300 transform hover:scale-105">
+          College Portal
+        </Link>
         
         {/* Mobile menu button */}
         <button 
-          className="md:hidden text-white"
+          className="md:hidden text-white hover:text-purple-300 transition-colors duration-200"
           onClick={toggleMenu}
         >
           <Menu className="h-6 w-6" />
@@ -59,17 +61,17 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
         <div className="hidden md:flex items-center space-x-8">
           {user ? (
             <>
-              <Link to="/dashboard" className="text-gray-300 hover:text-white transition-colors">Dashboard</Link>
+              <Link to="/dashboard" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105">Dashboard</Link>
               
               {/* Teacher-specific navigation links */}
               {isTeacher && (
                 <>
-                  <Link to="/library" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                    <Book className="h-4 w-4 mr-1" />
+                  <Link to="/library" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                    <Book className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                     Library
                   </Link>
-                  <Link to="/curriculum" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                    <GraduationCap className="h-4 w-4 mr-1" />
+                  <Link to="/curriculum" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                    <GraduationCap className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                     Curriculum
                   </Link>
                 </>
@@ -78,20 +80,20 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
               {/* Student navigation links */}
               {isStudent && (
                 <>
-                  <Link to="/clubs" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                    <Users className="h-4 w-4 mr-1" />
+                  <Link to="/clubs" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                    <Users className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                     Clubs
                   </Link>
-                  <Link to="/attendance" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                    <Calendar className="h-4 w-4 mr-1" />
+                  <Link to="/attendance" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                    <Calendar className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                     Attendance
                   </Link>
-                  <Link to="/library" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                    <Book className="h-4 w-4 mr-1" />
+                  <Link to="/library" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                    <Book className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                     Library
                   </Link>
-                  <Link to="/curriculum" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                    <GraduationCap className="h-4 w-4 mr-1" />
+                  <Link to="/curriculum" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                    <GraduationCap className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                     Curriculum
                   </Link>
                 </>
@@ -99,23 +101,23 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
 
               {/* Coordinator-specific navigation - only clubs */}
               {isCoordinator && (
-                <Link to="/clubs" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <Users className="h-4 w-4 mr-1" />
+                <Link to="/clubs" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                  <Users className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                   Clubs
                 </Link>
               )}
               
               {/* Semesters link (Teacher & Coordinator only) */}
               {canViewSemesters && (
-                <Link to="/semesters" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                  <Layers className="h-4 w-4 mr-1" />
+                <Link to="/semesters" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                  <Layers className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                   Semesters
                 </Link>
               )}
               
               <Button 
                 variant="ghost" 
-                className="text-white"
+                className="text-white hover:text-purple-300 hover:bg-purple-900/50 transition-all duration-300"
                 onClick={handleLogout}
               >
                 Logout
@@ -123,19 +125,19 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
             </>
           ) : (
             <>
-              <Link to="/learn-more" className="text-gray-300 hover:text-white transition-colors flex items-center">
-                <Info className="h-4 w-4 mr-1" />
+              <Link to="/learn-more" className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:scale-105 flex items-center group">
+                <Info className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                 Learn More
               </Link>
               <button 
                 onClick={handleLoginClick}
-                className="text-white hover:text-purple-400 transition-colors font-medium cursor-pointer px-3 py-1 rounded-md hover:bg-purple-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                className="text-white hover:text-purple-300 transition-all duration-300 font-medium cursor-pointer px-4 py-2 rounded-md hover:bg-purple-900/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 transform hover:scale-105"
               >
                 Login
               </button>
               <button 
                 onClick={handleSignupClick}
-                className="bg-purple-600 text-white px-4 py-2 rounded-md transition-colors hover:bg-purple-400 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-2 rounded-md transition-all duration-300 hover:from-purple-500 hover:to-indigo-500 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
               >
                 Signup
               </button>
@@ -145,13 +147,13 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
         
         {/* Mobile navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-16 right-0 w-48 bg-[#111111] border border-[#333333] rounded-lg shadow-lg z-50">
+          <div className="md:hidden absolute top-16 right-0 w-64 bg-gradient-to-b from-indigo-900/95 to-purple-900/95 backdrop-blur-md border border-purple-700/30 rounded-lg shadow-xl z-50 transform transition-all duration-300 ease-in-out">
             <div className="flex flex-col p-4 space-y-3">
               {user ? (
                 <>
                   <Link 
                     to="/dashboard" 
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Dashboard
@@ -162,18 +164,18 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
                     <>
                       <Link 
                         to="/library" 
-                        className="text-gray-300 hover:text-white transition-colors flex items-center"
+                        className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Book className="h-4 w-4 mr-1" />
+                        <Book className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                         Library
                       </Link>
                       <Link 
                         to="/curriculum" 
-                        className="text-gray-300 hover:text-white transition-colors flex items-center"
+                        className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <GraduationCap className="h-4 w-4 mr-1" />
+                        <GraduationCap className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                         Curriculum
                       </Link>
                     </>
@@ -184,34 +186,34 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
                     <>
                       <Link 
                         to="/clubs" 
-                        className="text-gray-300 hover:text-white transition-colors flex items-center"
+                        className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Users className="h-4 w-4 mr-1" />
+                        <Users className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                         Clubs
                       </Link>
                       <Link 
                         to="/attendance" 
-                        className="text-gray-300 hover:text-white transition-colors flex items-center"
+                        className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Calendar className="h-4 w-4 mr-1" />
+                        <Calendar className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                         Attendance
                       </Link>
                       <Link 
                         to="/library" 
-                        className="text-gray-300 hover:text-white transition-colors flex items-center"
+                        className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <Book className="h-4 w-4 mr-1" />
+                        <Book className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                         Library
                       </Link>
                       <Link 
                         to="/curriculum" 
-                        className="text-gray-300 hover:text-white transition-colors flex items-center"
+                        className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        <GraduationCap className="h-4 w-4 mr-1" />
+                        <GraduationCap className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                         Curriculum
                       </Link>
                     </>
@@ -221,10 +223,10 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
                   {isCoordinator && (
                     <Link 
                       to="/clubs" 
-                      className="text-gray-300 hover:text-white transition-colors flex items-center"
+                      className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Users className="h-4 w-4 mr-1" />
+                      <Users className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                       Clubs
                     </Link>
                   )}
@@ -233,17 +235,17 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
                   {canViewSemesters && (
                     <Link 
                       to="/semesters" 
-                      className="text-gray-300 hover:text-white transition-colors flex items-center"
+                      className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <Layers className="h-4 w-4 mr-1" />
+                      <Layers className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                       Semesters
                     </Link>
                   )}
                   
                   <Button 
                     variant="ghost" 
-                    className="text-white justify-start p-0 h-auto font-normal"
+                    className="text-white hover:text-purple-300 hover:bg-purple-900/50 transition-all duration-300 justify-start p-0 h-auto font-normal"
                     onClick={() => {
                       handleLogout();
                       setIsMenuOpen(false);
@@ -256,10 +258,10 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
                 <>
                   <Link 
                     to="/learn-more" 
-                    className="text-gray-300 hover:text-white transition-colors flex items-center"
+                    className="text-gray-200 hover:text-purple-300 transition-all duration-300 hover:translate-x-2 flex items-center group"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <Info className="h-4 w-4 mr-1" />
+                    <Info className="h-4 w-4 mr-1 group-hover:rotate-12 transition-transform duration-300" />
                     Learn More
                   </Link>
                   <button 
@@ -267,7 +269,7 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
                       handleLoginClick();
                       setIsMenuOpen(false);
                     }}
-                    className="text-white hover:text-purple-400 transition-colors font-medium cursor-pointer px-3 py-1 rounded-md hover:bg-purple-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                    className="text-white hover:text-purple-300 transition-all duration-300 font-medium cursor-pointer px-4 py-2 rounded-md hover:bg-purple-900/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
                   >
                     Login
                   </button>
@@ -276,7 +278,7 @@ const Navbar = ({ showNavbar = true }: NavbarProps) => {
                       handleSignupClick();
                       setIsMenuOpen(false);
                     }}
-                    className="bg-purple-600 text-white px-4 py-2 rounded-md transition-colors hover:bg-purple-400 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                    className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-2 rounded-md transition-all duration-300 hover:from-purple-500 hover:to-indigo-500 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 shadow-lg hover:shadow-purple-500/25"
                   >
                     Signup
                   </button>
