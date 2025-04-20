@@ -182,20 +182,20 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {semesters.map((semester) => (
-          <Card key={semester} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-              <CardTitle className="text-xl">Semester {semester}</CardTitle>
-              <CardDescription className="text-white/80">Academic resources</CardDescription>
+          <Card key={semester} className="shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-t-teal-500 overflow-hidden bg-slate-900">
+            <CardHeader className="bg-gradient-to-br from-teal-950 to-slate-900 text-white">
+              <CardTitle className="text-xl font-bold">Semester {semester}</CardTitle>
+              <CardDescription className="text-white/90 font-medium">Academic resources</CardDescription>
             </CardHeader>
             
-            <CardContent className="p-4">
+            <CardContent className="p-4 bg-slate-800/40">
               <Tabs defaultValue="curriculum" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 mb-4">
-                  <TabsTrigger value="curriculum" className="text-sm">
+                <TabsList className="grid w-full grid-cols-2 mb-4 bg-slate-800/40">
+                  <TabsTrigger value="curriculum" className="text-sm font-medium data-[state=active]:bg-teal-900 data-[state=active]:text-teal-100">
                     <FileText className="h-4 w-4 mr-2" />
                     Curriculum
                   </TabsTrigger>
-                  <TabsTrigger value="library" className="text-sm">
+                  <TabsTrigger value="library" className="text-sm font-medium data-[state=active]:bg-teal-900 data-[state=active]:text-teal-100">
                     <BookOpen className="h-4 w-4 mr-2" />
                     Library
                   </TabsTrigger>
@@ -208,17 +208,17 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
                       curriculumItems[semester].map((item) => (
                         <div 
                           key={item._id} 
-                          className="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100"
+                          className="p-3 bg-slate-800 rounded-lg border border-slate-700 transition-colors duration-200"
                         >
-                          <h4 className="font-medium text-gray-900 truncate">{item.title}</h4>
-                          <p className="text-sm text-gray-500 mt-1 line-clamp-2">{item.description}</p>
+                          <h4 className="font-semibold text-slate-300 truncate">{item.title}</h4>
+                          <p className="text-sm text-slate-300 mt-1 line-clamp-2">{item.description}</p>
                           
                           <div className="flex justify-between items-center mt-2">
                             <Button 
                               variant="ghost" 
                               size="sm" 
                               onClick={() => handleDownload(item.fileLink)}
-                              className="text-blue-600 hover:text-blue-800 p-0 h-8"
+                              className="text-teal-400 hover:text-teal-300 hover:bg-teal-900/50 p-0 h-8"
                             >
                               <Download className="h-4 w-4 mr-1" />
                               <span className="text-xs">Download</span>
@@ -229,14 +229,14 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
                                 <Button 
                                   variant="ghost" 
                                   size="icon" 
-                                  className="h-8 w-8 text-gray-500 hover:text-blue-600"
+                                  className="h-8 w-8 text-slate-400 hover:text-teal-400 hover:bg-teal-900/50"
                                 >
                                   <Edit className="h-4 w-4" />
                                 </Button>
                                 <Button 
                                   variant="ghost" 
                                   size="icon"
-                                  className="h-8 w-8 text-gray-500 hover:text-red-600"
+                                  className="h-8 w-8 text-slate-400 hover:text-red-400 hover:bg-red-900/50"
                                   onClick={() => setActiveDeleteDialog({type: 'curriculum', id: item._id})}
                                 >
                                   <Trash2 className="h-4 w-4" />
@@ -247,14 +247,14 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
                         </div>
                       ))
                     ) : (
-                      <div className="text-center py-8 text-gray-500">
+                      <div className="text-center py-8 text-slate-300 rounded-lg border border-slate-700 bg-slate-800">
                         <FileText className="h-8 w-8 mx-auto mb-2 opacity-30" />
                         <p>No curriculum materials added</p>
                         {canEditCurriculum && (
                           <Button 
                             variant="outline" 
                             size="sm" 
-                            className="mt-2 text-xs"
+                            className="mt-2 text-xs border-teal-500 text-teal-800 hover:bg-teal-900/50"
                             onClick={() => console.log(`Add curriculum for semester ${semester}`)}
                           >
                             <Plus className="h-3 w-3 mr-1" />
@@ -273,11 +273,11 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
                       libraryItems[semester].map((item) => (
                         <div 
                           key={item._id} 
-                          className="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100"
+                          className="p-3 bg-slate-800 rounded-lg border border-slate-700 hover:bg-slate-700/50 transition-colors duration-200"
                         >
-                          <h4 className="font-medium text-gray-900 truncate">{item.title}</h4>
-                          <p className="text-xs text-gray-600 mb-1">by {item.author}</p>
-                          <p className="text-sm text-gray-500 mt-1 line-clamp-2">{item.description}</p>
+                          <h4 className="font-semibold text-slate-300 truncate">{item.title}</h4>
+                          <p className="text-xs text-teal-400 mb-1">by {item.author}</p>
+                          <p className="text-sm text-slate-300 mt-1 line-clamp-2">{item.description}</p>
                           
                           <div className="flex justify-between items-center mt-2">
                             {item.link && item.link !== ' ' && (
@@ -285,7 +285,7 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
                                 variant="ghost" 
                                 size="sm" 
                                 onClick={() => handleDownload(item.link)}
-                                className="text-blue-600 hover:text-blue-800 p-0 h-8"
+                                className="text-teal-400 hover:text-teal-300 hover:bg-teal-900/50 p-0 h-8"
                               >
                                 <Download className="h-4 w-4 mr-1" />
                                 <span className="text-xs">Download</span>
@@ -297,14 +297,14 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
                                 <Button 
                                   variant="ghost" 
                                   size="icon" 
-                                  className="h-8 w-8 text-gray-500 hover:text-blue-600"
+                                  className="h-8 w-8 text-slate-400 hover:text-teal-400 hover:bg-teal-900/50"
                                 >
                                   <Edit className="h-4 w-4" />
                                 </Button>
                                 <Button 
                                   variant="ghost" 
                                   size="icon"
-                                  className="h-8 w-8 text-gray-500 hover:text-red-600"
+                                  className="h-8 w-8 text-slate-400 hover:text-red-400 hover:bg-red-900/50"
                                   onClick={() => setActiveDeleteDialog({type: 'library', id: item._id})}
                                 >
                                   <Trash2 className="h-4 w-4" />
@@ -315,14 +315,14 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
                         </div>
                       ))
                     ) : (
-                      <div className="text-center py-8 text-gray-500">
+                      <div className="text-center py-8 text-slate-300 bg-slate-800 rounded-lg border border-slate-700">
                         <BookOpen className="h-8 w-8 mx-auto mb-2 opacity-30" />
                         <p>No library resources added</p>
                         {canEditLibrary && (
                           <Button 
                             variant="outline" 
                             size="sm" 
-                            className="mt-2 text-xs"
+                            className="mt-2 text-xs border-teal-500 text-teal-800 hover:bg-teal-900/50"
                             onClick={() => console.log(`Add library resource for semester ${semester}`)}
                           >
                             <Plus className="h-3 w-3 mr-1" />
@@ -342,20 +342,21 @@ const SemesterFlashcards: React.FC<SemesterFlashcardsProps> = ({ refreshData }) 
       {/* Confirmation Dialog for Delete */}
       {activeDeleteDialog && (
         <Dialog open={!!activeDeleteDialog} onOpenChange={() => setActiveDeleteDialog(null)}>
-          <DialogContent className="sm:max-w-md">
+          <DialogContent className="sm:max-w-md bg-slate-900 border-slate-700">
             <DialogHeader>
-              <DialogTitle>Confirm Deletion</DialogTitle>
+              <DialogTitle className="text-xl font-bold text-slate-100">Confirm Deletion</DialogTitle>
             </DialogHeader>
             <div className="py-4">
-              <p>Are you sure you want to delete this {activeDeleteDialog.type} item? This action cannot be undone.</p>
+              <p className="text-slate-300">Are you sure you want to delete this {activeDeleteDialog.type} item? This action cannot be undone.</p>
             </div>
             <DialogFooter className="flex space-x-2 justify-end">
-              <Button variant="outline" onClick={() => setActiveDeleteDialog(null)}>
+              <Button variant="outline" onClick={() => setActiveDeleteDialog(null)} className="border-slate-600 text-slate-300 hover:bg-slate-800">
                 Cancel
               </Button>
               <Button 
                 variant="destructive"
                 onClick={() => handleDelete(activeDeleteDialog.type, activeDeleteDialog.id)}
+                className="bg-red-900 hover:bg-red-800 text-red-100"
               >
                 Delete
               </Button>

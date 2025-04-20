@@ -90,27 +90,27 @@ const Dashboard = () => {
           <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
         </div>
 
-        <div className="flex-grow grid gap-4 p-8" style={{
+        <div className="flex-grow grid gap-10 p-12 place-items-center" style={{
           gridTemplateColumns: isCoordinator 
             ? '1fr' 
             : isTeacher 
-              ? 'repeat(2, 1fr)' 
-              : 'repeat(4, 1fr)'
+              ? 'repeat(2, minmax(300px, 400px))' 
+              : 'repeat(4, minmax(250px, 300px))'
         }}>
           {cards.map((card) => (
             <Card
               key={card.title}
-              className={`h-[calc(100vh-12rem)] bg-gradient-to-br ${card.color} border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:bg-gradient-to-br ${card.hoverColor} cursor-pointer overflow-hidden group`}
+              className={`aspect-square w-full max-w-[400px] bg-gradient-to-br ${card.color} border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:bg-gradient-to-br ${card.hoverColor} cursor-pointer overflow-hidden group`}
               onClick={() => navigate(card.link)}
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white transition-opacity duration-300 rounded-lg"></div>
-              <CardHeader className="flex flex-col items-center justify-center pt-10 pb-4 space-y-4">
+              <CardHeader className="flex flex-col items-center justify-center h-1/2 space-y-4">
                 <div className="p-4 rounded-full bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition-colors duration-300">
                   <card.icon className="h-12 w-12 text-white" />
                 </div>
                 <CardTitle className="text-3xl font-bold text-white text-center">{card.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex items-center justify-center h-full pb-10">
+              <CardContent className="flex items-center justify-center h-1/2">
                 <p className="text-lg text-white/80 text-center max-w-xs">{card.description}</p>
               </CardContent>
             </Card>

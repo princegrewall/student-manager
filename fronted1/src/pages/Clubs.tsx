@@ -42,27 +42,29 @@ const Clubs = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-teal-950 to-slate-900 text-white">
       <Navbar />
 
-      <main className="flex-grow flex flex-col">
+      <main className="flex-grow flex flex-col items-center justify-center">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold mb-4">Clubs</h1>
+          <h1 className="text-3xl font-bold mb-4 text-center">Clubs</h1>
         </div>
 
-        <div className="flex-grow grid grid-cols-1 md:grid-cols-3 gap-4 px-4 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-4 pb-8 max-w-6xl mx-auto">
           {clubTypes.map((club) => (
             <Card
               key={club.title}
-              className={`h-[calc(100vh-12rem)] bg-gradient-to-br ${club.color} border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:bg-gradient-to-br ${club.hoverColor} cursor-pointer overflow-hidden group`}
+              className={`aspect-square bg-gradient-to-br ${club.color} border-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] hover:bg-gradient-to-br ${club.hoverColor} cursor-pointer overflow-hidden group`}
               onClick={() => navigate(club.link)}
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-white transition-opacity duration-300 rounded-lg"></div>
-              <CardHeader className="flex flex-col items-center justify-center pt-10 pb-4 space-y-4">
-                <div className="p-4 rounded-full bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition-colors duration-300">
-                  <club.icon className="h-12 w-12 text-white" />
+              <CardHeader className="flex flex-col items-center justify-center pt-6 pb-2 space-y-2">
+                <div className="p-3 rounded-full bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition-colors duration-300">
+                  <club.icon className="h-10 w-10 text-white" />
                 </div>
-                <CardTitle className="text-3xl font-bold text-white text-center">{club.title}</CardTitle>
+                <CardTitle className="text-2xl font-bold text-white text-center">{club.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex items-center justify-center h-full pb-10">
-                <p className="text-lg text-white/80 text-center max-w-xs px-4">{club.description}</p>
+              <CardContent className="flex items-start justify-center h-full pb-6">
+                <div className="overflow-y-auto max-h-[calc(100%-2rem)] scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+                  <p className="text-base text-white/80 text-center max-w-xs px-4">{club.description}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
