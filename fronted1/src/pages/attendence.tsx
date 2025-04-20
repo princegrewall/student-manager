@@ -620,7 +620,7 @@ const Attendance = () => {
 
                         return (
                           <div key={index} className="flex flex-col items-center">
-                            <div className="text-xs text-teal-300 mb-1">{day.label}</div>
+                            <div className="text-s text-teal-300 mb-1">{day.label}</div>
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium 
                                                             ${isToday ? "ring-2 ring-teal-400" : ""}
