@@ -4,10 +4,10 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const features = [
-  "Lightning fast performance",
-  "Secure by default",
-  "Real-time updates",
-  "24/7 Support"
+  "Campus Control Center",
+  "Student Life Manager",
+  "Seamless Campus Solution",
+  "All-in-One Dashboard"
 ];
 
 const Index = () => {
@@ -28,11 +28,11 @@ const Index = () => {
         {/* Hero Section */}
         <div className="relative isolate px-6 pt-14 lg:px-8">
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg">
-              Build your next great idea faster
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-lg">
+            Empower Your Campus. One Platform. Total Control.
             </h1>
             <p className="mt-6 text-lg leading-8 text-purple-200">
-              Everything you need to deploy your app, plus tools to manage it
+            Seamlessly track, manage, and support every part of student life.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
@@ -56,12 +56,12 @@ const Index = () => {
         <div className="bg-[#1c1c2a] py-24 sm:py-32 relative z-10">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
-              <h2 className="text-base font-semibold leading-7 text-purple-400">Deploy faster</h2>
+              <h2 className="text-base font-semibold leading-7 text-purple-400">Here we go,</h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Everything you need to deploy your app
+              Everything you need to run your campus, right at your fingertips.
               </p>
               <p className="mt-6 text-lg leading-8 text-purple-200">
-                Get your ideas to market faster with our comprehensive platform
+              Engage , Manage , and Support Students
               </p>
             </div>
 
