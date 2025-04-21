@@ -62,5 +62,30 @@ npm install
 
 npm run dev
 
+## 📸 Snapshots
+
+Just take a look at the snapshots of my project below to get a quick idea of how it works:
+
+### 👩‍🎓 Student View
+
+
 ![image alt](https://github.com/princegrewall/student-manager/blob/44692e3ceb72647391514d3a26e2f7e9a1432515/Screenshot%202025-04-21%20at%2014.34.22.png)
+![image alt](https://github.com/princegrewall/student-manager/blob/7252fd42bb1e3358183d58b589bbe85139523800/Screenshot%202025-04-21%20at%2014.34.38.png)
+![image alt](https://github.com/princegrewall/student-manager/blob/7252fd42bb1e3358183d58b589bbe85139523800/Screenshot%202025-04-21%20at%2014.34.54.png)
+![image alt](https://github.com/princegrewall/student-manager/blob/7252fd42bb1e3358183d58b589bbe85139523800/Screenshot%202025-04-21%20at%2014.35.03.png)
+![image alt](https://github.com/princegrewall/student-manager/blob/7252fd42bb1e3358183d58b589bbe85139523800/Screenshot%202025-04-21%20at%2014.35.27.png)
+![image alt](https://github.com/princegrewall/student-manager/blob/7252fd42bb1e3358183d58b589bbe85139523800/Screenshot%202025-04-21%20at%2014.36.25.png)
+
+
+### 👨‍🏫 Teacher View
+
+![image alt](https://github.com/princegrewall/student-manager/blob/4df1517e245ad7c888667720f51081690f241148/Screenshot%202025-04-21%20at%2014.51.16.png)
+![image alt](https://github.com/princegrewall/student-manager/blob/4df1517e245ad7c888667720f51081690f241148/Screenshot%202025-04-21%20at%2014.51.26.png)
+
+
+
+### 🧑‍💼 Coordinator View
+
+![image alt](https://github.com/princegrewall/student-manager/blob/4df1517e245ad7c888667720f51081690f241148/Screenshot%202025-04-21%20at%2014.50.28.png)
+![image alt](https://github.com/princegrewall/student-manager/blob/4df1517e245ad7c888667720f51081690f241148/Screenshot%202025-04-21%20at%2014.50.40.png)
 
