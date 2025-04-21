@@ -35,17 +35,22 @@ If you want to run this project on your local system:
 Clone the repository:
 
 git clone https://github.com/princegrewall/student-manager.git
+
 Open the project in your code editor
 
 Start the frontend:
 
 cd frontend1
+
 npm install
+
 npm run dev
 
 Start the backend:
 
 cd ../backend1
+
 npm install
+
 npm run dev
 
