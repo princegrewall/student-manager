@@ -62,3 +62,5 @@ npm install
 
 npm run dev
 
+![image alt](https://github.com/princegrewall/student-manager/blob/44692e3ceb72647391514d3a26e2f7e9a1432515/Screenshot%202025-04-21%20at%2014.34.22.png)
+
