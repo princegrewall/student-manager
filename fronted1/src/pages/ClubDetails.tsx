@@ -1063,7 +1063,7 @@ const ClubDetails = () => {
                 {events.map((event) => (
                   <Card
                     key={event._id}
-                    className="bg-gradient-to-r from-gray-500 to-gray-600 border-none shadow-md hover:shadow-lg transition-all duration-300"
+                    className="bg-gradient-to-r  from-blue-400 to-blue-800 border-none shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     <CardContent className="pt-4">
                       <div className="flex justify-between items-start">
