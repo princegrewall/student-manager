@@ -12,7 +12,7 @@ import NotFound from "./pages/NotFound";
 import Unauthorized from "./pages/Unauthorized";
 import Dashboard from "./pages/Dashboard";
 import Clubs from "./pages/Clubs";
-import ClubDetails from "./pages/ClubDetails";
+import ClubDetails from "./pages/ClubDetails"
 import Attendance from "./pages/attendence";
 import Library from "./pages/library";
 import Curriculum from "./pages/curriculum";
