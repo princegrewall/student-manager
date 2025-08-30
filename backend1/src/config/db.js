@@ -32,15 +32,15 @@ const connectDB = async () => {
     const connectionString = sanitizeConnectionString(process.env.MONGODB_URI);
     
     // Log sanitized string (hide password)
-    const logString = connectionString.replace(/:[^:@]+@/, ':****@');
-    console.log('Using connection string:', logString); 
+    // const logString = connectionString.replace(/:[^:@]+@/, ':****@');
+    // console.log('Using connection string:', logString); 
     
     const conn = await mongoose.connect(connectionString);
     
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    //console.log(`MongoDB Connected: ${conn.connection.host}`);
     return conn;
   } catch (err) {
-    console.error(`Error connecting to MongoDB: ${err.message}`);
+    //console.error(`Error connecting to MongoDB: ${err.message}`);
     
     // More detailed error information for common MongoDB connection issues
     if (err.message.includes('bad auth')) {
